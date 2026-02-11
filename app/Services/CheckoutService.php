@@ -12,14 +12,11 @@ class CheckoutService
     ) {
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function checkout(CheckoutData $data): array
+    public function checkout(CheckoutData $data): object
     {
         $pricing = ($this->calculateTotal)($data);
 
-        return [
+        return (object) [
             'guest' => $data->guestName,
             'room_type' => $data->roomType,
             'nights' => $data->nights,
